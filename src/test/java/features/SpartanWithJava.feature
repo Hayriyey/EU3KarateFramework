@@ -11,7 +11,7 @@ Feature: Karate Java Integration
     Then status 200
 
 
-  @wip
+
   Scenario: Create a new spartan
     Given  url spartanUrl
     And path "api/spartans"
@@ -29,4 +29,12 @@ Feature: Karate Java Integration
     Then status 201
     And print response
 
-    Scenario: Create a new spartan with random data
+   @wip
+   Scenario: reading java methods
+     #point the class that we want to run
+     #Java.type --> used to connect to java class
+     * def SDG = Java.type('utilities.SpartanDataGenerator')
+     * def newSpartan = SDG.createSpartan()
+     #run the static method in that class and capture the result
+     #the return map object is represented as a json
+     * print newSpartan
