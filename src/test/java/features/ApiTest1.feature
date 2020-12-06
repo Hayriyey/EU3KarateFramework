@@ -24,7 +24,7 @@ Feature: exchange rate api tests
     #this equals to headers().hasHeaderWithName("headername") in restassured
 
 
-  @wip
+
   Scenario: json body verification
     Given url 'https://api.exchangeratesapi.io/2010-01-12'
     When method get
