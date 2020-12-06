@@ -3,6 +3,7 @@ Feature:  Parameters examples
   Background:
     * def baseUrl = 'https://api.exchangeratesapi.io'
     * def spartanUrl = 'http://52.55.102.92:8000'
+    * def hrUrl = 'http://52.55.102.92:1000/ords/hr'
 
   Scenario: path parameters
     Given url baseUrl
@@ -23,7 +24,6 @@ Feature:  Parameters examples
     Then status 200
     And print response
 
-  @wip
   Scenario: get ones spartan only
     Given url spartanUrl
     And path "api/spartans"
@@ -72,6 +72,13 @@ Feature:  Parameters examples
 
     @wip
     Scenario: hr regions example
+        Given url hrUrl
+        And path 'regions'
+        When method GET
+        Then status 200
+        And match response.limit == 25
+        And match each response.items[*].region_id == '#number'
+
 
 
 
