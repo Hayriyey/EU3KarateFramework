@@ -51,7 +51,7 @@ Feature:  Parameters examples
     And print response
     And match response == expectedSpartan
 
-    @wip
+
     Scenario:  query parameters
       Given url spartanUrl
       And path "api/spartans/search"
@@ -63,4 +63,19 @@ Feature:  Parameters examples
       And print response
       And match response.pageable.pageNumber == 0
       #verify each content has gender = Female
-      
+      And match each response.content contains {"gender":"Female"}
+      #second way of iteration
+      And match each response.content[*].gender == 'Female'
+      And match response.content[0].name == 'Jinny'
+      #verify each content phone is number
+      And match each response.content[*].phone == '#number'
+
+    @wip
+    Scenario: hr regions example
+
+
+
+
+
+
+
