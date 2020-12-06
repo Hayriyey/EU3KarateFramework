@@ -36,8 +36,8 @@ Feature: using match keyword
   @wip
   Scenario: contains matching
     * def employees =
-    """
-    [
+  """
+  [
      {
       "first_name":"TJ",
       "salary":24001,
