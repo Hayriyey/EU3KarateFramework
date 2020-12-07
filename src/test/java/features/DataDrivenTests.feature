@@ -1,5 +1,4 @@
 Feature: Data driven tests
-  @wip
   Scenario Outline: get token for user <email>
     Given url 'https://cybertek-reservation-api-qa2.herokuapp.com/'
     And path 'sign'
@@ -18,3 +17,21 @@ Feature: Data driven tests
       | dfrederickb5@yellowbook.com | engraciahuc        |
       | apainb6@google.co.jp        | rosettalightollers |
       | fbawmeb7@studiopress.com    | sherilyngohn       |
+
+  @wip
+  Scenario Outline: get token for user <email>
+    Given url 'https://cybertek-reservation-api-qa2.herokuapp.com/'
+    And path 'sign'
+    And header Accept = 'application/json'
+    And param email = '<email>'
+    And param password = '<password>'
+    When method GET
+    Then status 200
+    And print response.accessToken
+    And def token = response.accessToken
+
+    Examples:
+    |read('data/users.csv')|
+
+    @wip
+    Scenario: get user information verification(Database vs API)
