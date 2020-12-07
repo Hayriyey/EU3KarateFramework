@@ -1,5 +1,5 @@
 Feature: get user token
-    @wip
+
     Scenario: get one user token
       Given url 'https://cybertek-reservation-api-qa2.herokuapp.com/'
       And path 'sign'
@@ -10,3 +10,4 @@ Feature: get user token
       Then status 200
       And print response.accessToken
       And def token = response.accessToken
+      And def name = 'steven'
