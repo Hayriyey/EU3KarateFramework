@@ -9,7 +9,7 @@ Feature: Bookit Api tests
       * print firstname
       * print 'Token From Background',accessToken
 
-      @wip
+
       Scenario: get user information
         Given url baseUrl
         And path 'api/users/me'
@@ -19,3 +19,17 @@ Feature: Bookit Api tests
         Then status 200
         And print response
         And match response == {"id":57,"firstName":"Ase","lastName":"Norval","role":"student-team-leader"}
+
+
+      @wip
+      Scenario:  get campus information
+        Given url baseUrl
+        And path 'api/campuses'
+        And header Authorization = 'Bearer ' + accessToken
+        And header Accept = 'application/json'
+        When method GET
+        Then status 200
+        And print response
+        # read the campuses.json file in the data directory
+        And def expectedCampuses = read('classpath:data/campuses.json')
+        And match response == expectedCampuses
